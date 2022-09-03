@@ -1,0 +1,61 @@
+
+<!-- <app-filter (eventMessage)='greet()'></app-filter> -->
+<h2 class="bg-danger p-2 text-center">{{orders}}</h2>
+<div class="p-2 m-2">
+<div class="p-2 m-2 ">
+  <h1 [ngClass]="'one two three'">Hello ,welcome {{yourName}}</h1>
+  <h1 class="p-3 m-2 bg-primary text-light text-center">{{this.mess}}</h1>
+  <p class="lead">{{moneytotal}}</p>
+  <p [ngClass]="' two four'">**This is my application , use at your risk**</p>
+  <div [ngClass]="getCssClass('mode')" [innerHTML]="banr"></div>
+</div>
+
+  <div class="search">
+    <input type="text" [(ngModel)]="searchTerm" class="searchTerm" placeholder="What are you looking for?" />
+  </div>
+
+  <table class="table table-bordered color-table" [ngClass]="['five','six']">  <!--use ngclass as an array to apply styles-->
+    <thead>
+      <th [class.active]="order === 'name'" (click)="setOrder('name')" class="mdl-data-table__cell--non-numeric">
+        Name<span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+
+      <th [class.active]="order === 'state'" (click)="setOrder('state')">City/State<span
+          [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span></th>
+
+      <th [class.active]="order === 'email'" (click)="setOrder('email')"> Email<span [hidden]="reverse">▼</span><span
+          [hidden]="!reverse">▲</span></th>
+
+      <th [class.active]="order === 'phone'" (click)="setOrder('phone')">Phone<span [hidden]="reverse">▼</span><span
+          [hidden]="!reverse">▲</span></th>
+
+    </thead>
+    <tbody>
+      <h3 class="bg-primary">{{errorMsg}}</h3>
+      <tr *ngFor="let item of filteredList | slice: (page-1) * pageSize : page * pageSize| orderBy: order:reverse:caseInsensitive "> <!--use ngClass as an array to apply styles-->
+        <td>
+          <div class="name-box pointer-item">
+            <div class="img-box"><img src="../../../../assets/images/table-img.png"></div>
+            {{item.name}}
+          </div>
+        </td>
+        <td>{{item.state}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.phone}}</td>
+        <td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+ <div class="d-flex align-items-center justify-content-end">
+  <div class="p-2 bd-highlight">
+    <ngb-pagination
+    class="custom-pagination"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="filteredList.length"></ngb-pagination>
+
+    </div>
+    </div>
+
+<!-- <app-inventory (send)="sendingforChild()"></app-inventory>  -->

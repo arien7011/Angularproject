@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bootpanel';
+
+  ParentThing(){
+    alert("hello there, I'm parent thing");
+  }
+
+
 }
